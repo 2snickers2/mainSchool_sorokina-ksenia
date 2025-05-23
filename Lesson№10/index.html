@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <canvas id="myCanvas" width="500" height="500" style="border:1px solid #949494;">
+        Your browser does not support the HTML5 canvas tag.</canvas>
+    <script>
+        let c = document.getElementById("myCanvas");
+        let cxt = c.getContext("2d")
+        // cxt.fillStyle = "rgb(200, 0, 0)";
+        let colors = ["red", "blue", "green", "yellow", "purple", "orange", "pink", "turquoise", "gold", "silver", "violet", "indigo", "cyan", "magenta", "brown", "black", "white", "gray", "beige"];
+        let a =1
+        let = r,g,b
+
+        let x=15, y= 15
+        for(let i = 0; i < 10; i++){
+            r = Math.random()
+            cxt.fillRect(x, y, 50, 50);
+            let randColor = colors[Math.floor(Math.random() * colors.length)];
+            cxt.fillStyle = randColor
+
+            x = x+15;
+            y = y+15;
+        }
+
+        // let cxt = c.getContext("2d");
+        cxt.fillStyle = "rgb(0 0 180)";
+        cxt.fillRect(10, 10, 50, 50);
+
+        cxt.fillStyle = "rgb(0 0 200)";
+        cxt.fillRect(30, 30, 50, 50);
+
+        cxt.fillStyle = "rgb(0 0 250)";
+        cxt.fillRect(50, 50, 50, 50);
+        cxt.lineWidth = 6;
+     cxt.strokeStyle = "red";
+        cxt.setLineDash([1, 5, 10, 15, 20]);
+        cxt.strokeRect(10, 10, 50, 50);
+
+        cxt.strokeStyle = "green";
+        cxt.setLineDash([20, 3, 3, 3, 3, 3, 3, 3]);
+        cxt.strokeRect(30, 30, 50, 50);
+        cxt.globalAlpha = 0.5;
+
+        cxt.strokeStyle = "black";
+        cxt.setLineDash([2, 2, 10, 5]);
+        cxt.strokeRect(50, 50, 50, 50);
+
+    </script>
+</body>
+</html>

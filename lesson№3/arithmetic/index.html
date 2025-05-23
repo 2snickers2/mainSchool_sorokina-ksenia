@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Arithmetic</title>
+    <link rel="stylesheet" href="../../lesson№1/css/style.css">
+</head>
+<body>
+    <div class="contaniner">
+        <h2 class="contaniner__text-name">Ми вивчаємо JavaScript</h2>
+        <div class="form">
+            <p class="form__name ">Введіть перший член прогресії</p>
+            <input class="form__input firstElement" input type="number" placeholder="см">
+            <p class="form__name " >Введіть різницю прогресії</p>
+            <input class="form__input progressionDifference" type="number" placeholder="см">
+            <p class="form__name ">Ведіть кл-ть елементів</p>
+            <input class="form__input itemNumber" type="number" placeholder="см">
+            <button class="form__button">Відправити</button>
+            <div class="form__outlet"></div>
+        </div>
+        
+    <script>
+        // min =+ prompt("Введіть min число ");
+        // max =+ prompt("Введіть max число ");
+        // factorial = (min + max)/2
+        // for (let i = min; i <= max; i++ ){
+        //         document.write(sum);
+        // }
+        // min = +prompt("введіть мінімальне", 1);
+        //     max = +prompt("введіть максимальне", 5);
+        //     let sum = 0;
+        //     let fac = 1;
+
+        //     for (let i = min; i <= max; i++) {
+        //         if (i % 2 == 0) {
+        //             document.writeln(i);
+        //         }
+        //         sum = sum + i;
+        //         fac = fac * i;
+        //     }
+        //     document.writeln(`ви ввели ${min} та ${max}<br> а сума: ${sum} <br> та факторіал: ${fac}`);
+
+        // number = prompt("Ведіть число");
+        // n = prompt("Введіть степінь");
+        // sum = Math.pow(number, n);
+        // document.write(sum);
+
+        //Арифметична прогресія 
+        document.querySelector('.form__button').onclick = myClick;
+            function myClick() {
+                let a1 = document.querySelector('.firstElement').value;
+                let d = document.querySelector('.progressionDifference').value;
+                let n = document.querySelector('.itemNumber').value;
+                let outlet = document.querySelector(".form__outlet");
+                outlet.innerHTML = "";
+
+                a1 = +(a1);
+                d = +(d);
+                n = +(n);
+
+                
+                document.querySelector(".form__outlet").innerHTML += `Перший елемент прогресії = ${a1} <br>`;
+                document.querySelector(".form__outlet").innerHTML += `Різниця прогресії = ${d} <br>`;
+                document.querySelector(".form__outlet").innerHTML += `Кількість елементів = ${n} <br>`;
+                 if (isNaN(a1) || isNaN(d) || isNaN(n) || a1 === 0 || d === 0 || n <= 0) {
+                    document.querySelector(".form__outlet").innerHTML += "Будь ласка, введіть коректні числові значення.";
+                    return;
+                }
+
+                let arithmeticProgression = " ";
+                for (let i = 0; i < n; i++) {
+                    let an = a1 + i * d;
+                    arithmeticProgression += an + " ";
+                }
+                document.querySelector(".form__outlet").innerHTML += `Арифметична прогресія = ${arithmeticProgression} <br>`;
+            }
+        // console.log(`Арифметическая прогрессия: ${progression}`)
+
+       
+
+
+        
+    </script>
+</body>
+</html>

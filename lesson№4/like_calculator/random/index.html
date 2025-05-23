@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="../../../lesson№1/css/style.css">
+</head>
+<body>
+    <div class="contaniner">
+        <h2 class="contaniner__text-name">Ми вивчаємо JavaScript</h2>
+        <div class="form">
+            <p class="form__name">Введіть початок діапазону </p>
+            <input class="form__input min" input type="number" placeholder="min">
+            <p class="form__name">Введіть кінець діапазону </p>
+            <input class="form__input max" type="number" placeholder="max">
+            <button class="form__button">Відправити</button>
+            <div class=" form-result result" >
+                <p class="form-result__message">Введіть число</p>
+                <input type="number" class="form-result__input form__input guessNumber" placeholder="number">
+                <button class="form-result__button form__button " >Відправити</button>
+            </div>
+            <div class="form__outlet"></div>
+        </div>
+    </div>
+    <script>
+        let randomDiaposon
+        let count = 10;
+
+
+        document.querySelector('.form__button').onclick = myClick;
+        document.querySelector('.form-result__button').onclick = checkResult;
+
+
+        function myClick() {
+            let min = document.querySelector(".min").value
+            let max = document.querySelector(".max").value
+            let outlet = document.querySelector(".form__outlet");
+
+            if (min === "" || max === "") {
+                outlet.innerHTML = "Заповніть всі поля";
+                return;
+            } 
+            min = +(min)
+            max = +(max)
+            if (min > max) {
+                outlet.innerHTML = "Помилка: мінімальнe число більше максимального "
+            } else {
+                randomDiaposon = Math.floor(Math.random() * (max - min + 1) + min)
+                outlet.innerHTML = `Вгадайте число в діапазоні від ${min} до ${max}. <br> У вас є ${count} спроб:`;
+                document.querySelector(".form-result").style.display = "block";
+            }
+        }
+
+        function checkResult() {
+            let guessNumber = document.querySelector('.guessNumber ').value;
+            let outlet = document.querySelector('.form__outlet');
+            if (guessNumber === "") {
+                outlet.innerHTML = "Заповніть всі поля";
+                return;
+            } 
+            guessNumber = +guessNumber;
+            
+            if (randomDiaposon > guessNumber) {
+                outlet.innerHTML = (`Загадане число більше ${guessNumber} `);
+            } else if (randomDiaposon < guessNumber) {
+                outlet.innerHTML = (`Загадане число менше ${guessNumber} `);
+            } else {
+                outlet.innerHTML = (`Ви вгадали число ${guessNumber}. <br> Вам знадобилось ${10 - count + 1} спроб.`);
+                return;
+
+            }
+            count--;
+            if (count <= 0) {
+                outlet.innerHTML = `Ващі спроби закінчилися. Загадане число було ${randomDiaposon} `;
+
+            }
+        }
+      
+    </script>
+</body>
+</html>

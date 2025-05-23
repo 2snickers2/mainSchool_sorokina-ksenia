@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JavaScript</title>
+    <link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+    <div class="contaniner">
+        <h2 class="contaniner__text-name">Ми вивчаємо JavaScript</h2>
+        <div class="form">
+            <p class="form__name">Введіть першу сторону</p>
+            <input class="form__input sideOne" input type="text" placeholder="см">
+            <p class="form__name">Введіть другу сторону</p>
+            <input class="form__input sideTwo" type="text" placeholder="см">
+            <p class="form__name">Введіть третю сторону</p>
+            <input class="form__input sideThird" type="text" placeholder="см">
+            <button class="form__button">Відправити</button>
+            <div class="form__outlet"></div>
+        </div>
+    </div>
+    <script>
+        document.querySelector('.form__button').onclick = myClick;
+            function myClick() {
+                let sideOne = document.querySelector('.sideOne').value;
+                let sideTwo = document.querySelector('.sideTwo').value;
+                let sideThird = document.querySelector('.sideThird').value;
+                let outlet = document.querySelector(".form__outlet");
+                outlet.innerHTML = "";
+
+                document.querySelector(".form__outlet").innerHTML += `Перша сторона трикутника = ${sideOne} <br>`;
+                document.querySelector(".form__outlet").innerHTML += `Друга сторона трикутника = ${sideTwo} <br>`;
+                document.querySelector(".form__outlet").innerHTML += `Третя сторона трикутника = ${sideThird} <br>`;
+
+                if (sideOne === "" || sideTwo === "" || sideThird === "") {
+                    outlet.innerHTML += 'Всі поля повинні бути заповнені <br>';
+                    return;
+                }
+
+                    sideOne = +sideOne;
+                    sideTwo = +sideTwo;
+                    sideThird = +sideThird;
+
+
+                if (isNaN(sideOne) || isNaN(sideTwo) || isNaN(sideThird)) {
+                    document.querySelector(".form__outlet").innerHTML += 'Всі сторони повинні бути числами <br>';
+                    return;
+                } else if (sideOne <= 0 || sideTwo <= 0 || sideThird <= 0) {
+                    document.querySelector(".form__outlet").innerHTML += 'Всі сторони трикутник повинні бути більше за 0';
+                    return;
+
+                } else if (sideOne + sideTwo <= sideThird || sideOne + sideThird <= sideTwo || sideTwo + sideThird <= sideOne) {
+                    document.querySelector(".form__outlet").innerHTML += 'З таких сторін не можна скласти трикутник :/ <br>';
+                    return;
+                } else {
+                    let perimeter = sideOne + sideTwo + sideThird;
+                    document.querySelector(".form__outlet").innerHTML += `Периметр трикутника = ${perimeter} <br>`;
+
+                    let p = perimeter / 2;
+                    let area = Math.sqrt(p * (p - sideOne) * (p - sideTwo) * (p - sideThird));
+                    document.querySelector(".form__outlet").innerHTML += `Площа трикутника = ${area.toFixed(2)} <br>`;
+                }
+        }
+    
+    </script>
+    </div>
+    </div>
+</body>
+</html>

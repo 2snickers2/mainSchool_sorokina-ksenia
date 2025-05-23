@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NumberXY</title>
+    <link rel="stylesheet" href="../../lesson№1/css/style.css">
+</head>
+<body>
+    <div class="contaniner">
+        <h2 class="contaniner__text-name">Ми вивчаємо JavaScript</h2>
+        <div class="form">
+            <p class="form__name">Введіть число x (від 0 до 1) </p>
+            <input class="form__input x" input type="text" placeholder="x">
+            <p class="form__name">Введіть число y (від 0 до 1) </p>
+            <input class="form__input y" type="text" placeholder="y">
+            <button class="form__button">Відправити</button>
+            <div class="form__outlet"></div>
+        </div>
+    </div>
+    <script>
+          document.querySelector('.form__button').onclick = myClick;
+            function myClick() {
+                let numberX = document.querySelector('.x').value;
+                let numberY = document.querySelector('.y').value;
+                let outlet = document.querySelector(".form__outlet");
+                outlet.innerHTML = "";
+
+                if (numberX === "" || numberY === "") {
+                    outlet.innerHTML = "Заповніть всі поля";
+                    return;
+                }
+
+                numberX = +(numberX)
+                numberY = +(numberY)
+
+                  if (isNaN(numberX) || isNaN(numberY)) {
+                    outlet.innerHTML = "Введіть число";
+                    return;
+                }
+                
+                do {
+                    if (numberX > 0 && numberX < 1 && numberY > 0 && numberY < 1) {
+                        let sum = numberX + numberY;
+                        outlet.innerHTML = `X = ${numberX} <br> Y = ${numberY} <br> Сума чисел: ${sum.toFixed(2)}`;
+                        break;
+                    } else {
+                        outlet.innerHTML = "Числа повинні бути в діапазоні від 0 до 1. Спробуйте ще раз.";
+                        return;
+                    }
+                } while (true);
+            }
+
+        
+
+    </script>
+</body>
+</html>

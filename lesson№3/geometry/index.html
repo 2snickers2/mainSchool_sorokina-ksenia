@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Geometry</title>
+    <link rel="stylesheet" href="../../lesson№1/css/style.css">
+</head>
+<body>
+    <div class="contaniner">
+        <h2 class="contaniner__text-name">Ми вивчаємо JavaScript</h2>
+        <div class="form">
+            <p class="form__name ">Введіть перший член прогресії</p>
+            <input class="form__input firstElement" input type="number" placeholder="см">
+            <p class="form__name ">Введіть знаменник прогресії</p>
+            <input class="form__input progressionDenominator" type="number" placeholder="см">
+            <p class="form__name ">Ведіть кл-ть елементів</p>
+            <input class="form__input itemNumber" type="number" placeholder="см">
+            <button class="form__button">Відправити</button>
+            <div class="form__outlet"></div>
+        </div>
+    <script> 
+    // Геометрична прогресія
+    document.querySelector('.form__button').onclick = myClick;
+        function myClick() {
+            let a1 = document.querySelector('.firstElement').value;
+            let q = document.querySelector('.progressionDenominator').value;
+            let n = document.querySelector('.itemNumber').value;
+            let outlet = document.querySelector(".form__outlet");
+            outlet.innerHTML = "";
+            a1 = +(a1);
+            q = +(q);
+            n = +(n);
+            document.querySelector(".form__outlet").innerHTML += `Перший член прогресії = ${a1} <br>`;
+            document.querySelector(".form__outlet").innerHTML += `Знаменник прогресії = ${q} <br>`;
+            document.querySelector(".form__outlet").innerHTML += `Кількість елементів = ${n} <br>`;
+            let geometricProgression = "";
+
+            if (isNaN(a1) || isNaN(q) || isNaN(n) || a1 === 0 || q === 0 || n <= 0) {
+                document.querySelector(".form__outlet").innerHTML += "Будь ласка, введіть коректні числові значення.";
+                return;
+            }
+            for (let i = 0; i < n; i++) {
+                let an = a1 * Math.pow(q, i);
+                geometricProgression += an + " ";
+            }
+            document.querySelector(".form__outlet").innerHTML += `Геометрична прогресія = ${geometricProgression} <br>`;
+        }
+
+        
+        </script>
+</body>
+</html>

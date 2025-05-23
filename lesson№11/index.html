@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="../lesson№1/css/style.css">
+</head>
+<body>
+    <div class="form">
+        <h2>Генерація шестикутників на канвасі</h2>
+        <p class="form__name">Введіть кількість шестикутників</p>
+        <input class="form__input text" id="hexagonCount" type="text" placeholder="Введіть кількість">
+        <button class="form__button" onclick="generateHexagons()">Відправити</button>
+
+        <canvas id="myCanvas" width="500" height="500" style="border:1px solid #000000;"></canvas>
+    </div>
+   <script>
+    function generateHexagons() {
+        let canvas = document.getElementById('myCanvas');
+        let ctx = canvas.getContext('2d');
+        let numberOfHexagons = parseInt(document.getElementById('hexagonCount').value);
+
+        ctx.clearRect(0, 0, canvas.width, canvas.height); 
+
+        for (let j = 0; j < numberOfHexagons; j++) {
+            drawHexagon(ctx, canvas.width, canvas.height);
+        }
+    }
+
+    function drawHexagon(ctx, canvasWidth, canvasHeight) {
+        let x = Math.random() * canvasWidth;
+        let y = Math.random() * canvasHeight;
+        let size = Math.random() * 100 + 1; 
+        let color = getRandomColor(); 
+
+        ctx.beginPath();
+
+        for (let i = 0; i < 6; i++) {
+            let angle = (Math.PI / 3) * i; 
+            let dx = x + size * Math.cos(angle);
+            let dy = y + size * Math.sin(angle);
+            if (i === 0) {
+                ctx.moveTo(dx, dy);
+            } else {
+                ctx.lineTo(dx, dy);
+            }
+        }
+
+        ctx.closePath();
+        ctx.fillStyle = color;
+        ctx.fill();
+    }
+
+    function getRandomColor() {
+        return '#' + (Math.random() * 0xFFFFFF << 0).toString(16);
+    }
+</script>
+</script>
+</body>
+</html>

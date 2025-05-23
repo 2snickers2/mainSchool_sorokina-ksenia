@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="../lesson№1/css/style.css">
+</head>
+<body>
+    <div class="form">
+    <h2 class="contaniner__text-name">Створення квадратиків</h2>
+    <p class="form__name">Введіть кількість квадратів</p>
+    <input class="form__input text" type="number" id="countInput" placeholder="Сколько квадратиків" min="1" max="50">
+    <button class="form__button" onclick="drawSquares()">відправити</button>
+    <canvas id="myCanvas" width="800" height="400"></canvas>
+  </div>
+  <script>
+    let canvas = document.getElementById("myCanvas");
+    let ctx = canvas.getContext("2d");
+
+    let colors = ["red", "blue", "green", "yellow", "purple", "orange", "pink", "turquoise", "gold", "silver", "violet", "indigo", "cyan", "magenta", "brown", "black", "gray", "beige"];
+
+    async function drawSquares() {
+      let count = parseInt(document.getElementById("countInput").value);
+    
+
+      let size = 60;
+      let offset = 15; 
+      let margin = 40;
+
+
+      let neededWidth = count * offset + size + margin;
+      let neededHeight = count * offset + size + margin;
+
+      canvas.width = neededWidth;
+      canvas.height = neededHeight;
+
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+      let startX = 20;
+      let startY = 20;
+
+      for (let i = 0; i < count; i++) {
+        let color = colors[Math.floor(Math.random() * colors.length)];
+        ctx.fillStyle = color;
+        ctx.fillRect(startX + i * offset, startY + i * offset, size, size);
+        await new Promise(resolve => setTimeout(resolve, 200)); 
+      }
+    }
+  </script>
+
+</body>
+</html>

@@ -1,0 +1,54 @@
+
+</body>
+</html>
+<!DOCTYPE html>
+<html lang="uk">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JavaScript</title>
+    <style>
+        body {
+            background-color: darkolivegreen;
+            font-size: 50px;
+            color: #9ff;
+        }
+    </style>
+</head>
+
+<body>
+    <script>
+            let a = prompt("Введіть першу сторону трикутника", 3);
+            let b = prompt("Введіть другу сторону трикутника", 4);
+            let c = prompt("Введіть третю сторону трикутника", 5);
+
+            if (a ==+ null || b === null || c === null) {
+                document.write(`Всі поля повинні бути заповнені`);
+            } else if (isNaN(a) || isNaN(b) || isNaN(c)) {
+                document.write(`Ви вводите не число`);
+            } else {
+                a = +(a);
+                b = +(b);
+                c = +(c);
+
+                if (a <= 0 || b <= 0 || c <= 0) {
+                    document.write("Всі сторони повинні бути більше за 0");
+                } else if ((a + b <= c) || (b + c <= a) || (a + c <= b)) {
+                    document.write("З таких сторін не можна скласти трикутник");
+                } else {
+                    document.write(`Перша сторона трикутника ${a} <br>`);
+                    document.write(`Друга сторона трикутника ${b} <br>`);
+                    document.write(`Третя сторона трикутника ${c} <br>`);
+
+                    let P = a + b + c;
+                    let halfP = P / 2;
+                    let S = Math.sqrt(halfP * (halfP - a) * (halfP - b) * (halfP - c));
+                    document.write(`Периметр трикутника дорівнює ${P} <br>`);
+                    document.write(`Площа трикутника дорівнює ${S} <br>`);
+                }
+            }
+    </script>
+</body>
+
+</html>

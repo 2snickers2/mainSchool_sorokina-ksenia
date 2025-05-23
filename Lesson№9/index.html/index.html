@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>World Capitals Sorting</title>
+    <link rel="stylesheet" href="../../lesson№1/css/style.css">
+</head>
+
+<body>
+
+    <div class="form">
+        <h2 class="contaniner__text-name">Сортування за алфавітом</h2>
+        <div class="form__outlet" id="worldCapitalsAlph"></div>
+        <h2 class="contaniner__text-name">Сортування за кількістю населення</h2>
+        <div class="form__outlet" id="worldCapitalsNumber"></div>
+    </div>
+    <script>
+         
+        let worldPopulation = {
+            "Afghanistan": 41128771,
+            "Albania": 2833472,
+            "Algeria": 45606480,
+            "Andorra": 79354,
+            "Angola": 36684202,
+            "Antigua and Barbuda": 94298,
+            "Argentina": 45773884,
+            "Armenia": 2780469,
+            "Australia": 26439111,
+            "Austria": 9066734,
+            "Azerbaijan": 10354996,
+            "Bahamas": 412623,
+            "Bahrain": 1493940,
+            "Bangladesh": 173121167,
+            "Barbados": 281995,
+            "Belarus": 9249797,
+            "Belgium": 11686140,
+            "Belize": 441471,
+            "Benin": 13743002,
+            "Bhutan": 787941,
+            "Bolivia": 12064469,
+            "Bosnia and Herzegovina": 3196515,
+            "Botswana": 2652459,
+            "Brazil": 216422446,
+            "Brunei": 454909,
+            "Bulgaria": 6652512,
+            "Burkina Faso": 23061238,
+            "Burundi": 13238559,
+            "Cabo Verde": 598682,
+            "Cambodia": 17273636,
+            "Cameroon": 29038791,
+            "Canada": 39107545,
+            "Central African Republic": 5813016,
+            "Chad": 18540332,
+            "Chile": 19629590,
+            "China": 1425671352,
+            "Colombia": 52058996,
+            "Comoros": 836774,
+            "Congo": 6134443,
+            "Costa Rica": 5272976,
+            "Croatia": 3766883,
+            "Cuba": 11220939,
+            "Cyprus": 1244188,
+            "Czech Republic": 10639969,
+            "DR Congo": 102262808,
+            "Denmark": 5894603,
+            "Djibouti": 1154511,
+            "Dominica": 73114,
+            "Dominican Republic": 11098380,
+            "Ecuador": 18190479,
+            "Egypt": 113980922,
+            "El Salvador": 6368553,
+            "Equatorial Guinea": 1777258,
+            "Eritrea": 3748901,
+            "Estonia": 1324785,
+            "Eswatini": 1252406,
+            "Ethiopia": 126527060,
+            "Fiji": 938761,
+            "Finland": 5572815,
+            "France": 64956400,
+            "Gabon": 2455100,
+            "Gambia": 2833064,
+            "Georgia": 3688647,
+            "Germany": 83294633,
+            "Ghana": 34545055,
+            "Greece": 10286327,
+            "Grenada": 126183,
+            "Guatemala": 19373320,
+            "Guinea": 14391890,
+            "Guinea-Bissau": 2159098,
+            "Guyana": 823885,
+            "Haiti": 11329937,
+            "Honduras": 10744532,
+            "Hungary": 9567125,
+            "Iceland": 378892,
+            "India": 1428627663,
+            "Indonesia": 278696100,
+            "Iran": 89580448,
+            "Iraq": 44182059,
+            "Ireland": 5158428,
+            "Israel": 9565130,
+            "Italy": 58958174,
+            "Ivory Coast": 28873823,
+            "Jamaica": 2825544,
+            "Japan": 123294513,
+            "Jordan": 11502464,
+            "Kazakhstan": 19820957,
+            "Kenya": 55100586,
+            "Kiribati": 133515,
+            "Kuwait": 4289161,
+            "Kyrgyzstan": 6892796,
+            "Laos": 7633779,
+            "Latvia": 1849529,
+            "Lebanon": 5467663,
+            "Lesotho": 2232619,
+            "Liberia": 5418618,
+            "Libya": 7002944,
+            "Liechtenstein": 39616,
+            "Lithuania": 2581947,
+            "Luxembourg": 670982
+        };
+
+        let worldCapitalsAlph = Object.keys(worldPopulation).sort();
+        let worldCapitalsNumber = Object.keys(worldPopulation).sort((a, b) => worldPopulation[a] - worldPopulation[b]);
+        let count 
+        for (key in worldPopulation){
+            count++
+        }
+        document.writeln(`Всього країн: ${count}`)
+        function displayCitiesAlph() {
+            let alphaDiv = document.getElementById('worldCapitalsAlph');
+            alphaDiv.innerHTML = ''; 
+            worldCapitalsAlph.forEach(city => {
+                alphaDiv.innerHTML += `<p>${city}: ${worldPopulation[city]}</p>`;
+            });
+        }
+
+        function displayCitiesNumber() {
+            let numberDiv = document.getElementById('worldCapitalsNumber');
+            numberDiv.innerHTML = ''; 
+            worldCapitalsNumber.forEach(city => {
+                numberDiv.innerHTML += `<p>${city}: ${worldPopulation[city]}</p>`;
+            });
+        }
+
+        displayCitiesAlph();
+        displayCitiesNumber();
+    </script>
+
+</body>
+
+</html>

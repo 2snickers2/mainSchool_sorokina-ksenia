@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="../lesson№1/css/style.css">
+</head>
+<body>
+    <div class="contaniner">
+        <h2 class="contaniner__text-name">Ми вивчаємо JavaScript</h2>
+        <div class="form">
+           
+            <p class="form__name ">Введіть підрядок </p>
+            <input class="form__input substring" input type="text" placeholder="текст">
+            
+            <div class="form__outlet"></div>
+        </div>
+    <script>
+  document.querySelector('.form__button').onclick = myClick;
+
+    function myClick() {
+
+        let text = document.querySelector(".text").value;
+        let substring = document.querySelector(".substring").value;
+        let outlet = document.querySelector(".form__outlet");
+        outlet.innerHTML = ""; 
+    function findOccurrences(text, substring) {
+            let positions = [], index = -1;
+            while ((index = text.indexOf(substring, index + 1)) !== -1) positions.push(index);
+            if(!positions.length){
+                positions = "Входжень не знайдено"
+            }
+            return positions
+        }
+
+        outlet.innerHTML = (findOccurrences(text, substring));
+         
+    }
+
+        
+    </script>
+</body>
+</html>

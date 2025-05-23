@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="../lesson№1/css/style.css">
+</head>
+<body>
+    <div class="contaniner">
+        <h2 class="contaniner__text-name">Ми вивчаємо JavaScript</h2>
+        <div class="form">
+            <p class="form__name ">Введіть число</p>
+            <input class="form__input number" input type="number" placeholder="число">
+            <button class="form__button">Відправити</button>
+            <div class="form__outlet"></div>
+        </div>
+    <script>
+        document.querySelector('.form__button').onclick = myClick;
+        function myClick() {
+            let number = document.querySelector(".number").value;
+            let outlet = document.querySelector(".form__outlet");
+            outlet.innerHTML = "";
+
+            let doublesNumber = "";
+            let unpairedNumber = "";
+            let sum = 0;
+            let length = number.length;
+            let word;
+
+            for (let i = 0; i < number.length; i++) {
+                let digit = Number(number[i]);
+                sum += digit;
+
+                if (digit % 2 === 0) {
+                    doublesNumber += digit + " ";
+
+                } else {
+                    unpairedNumber += digit + " ";
+
+                }
+            }
+                if (doublesNumber === 0 && unpairedNumber === 0) {
+                    outlet.innerHTML += "Нічого не знайдено";
+                }else{
+                    
+                    if (length % 100 >= 11 && length % 100 <= 19) {
+                        word = "цифр";
+                    } else if (length % 10 === 1) {
+                        word = "цифра";
+                    } else if (length % 10 >= 2 && length % 10 <= 4) {
+                        word = "цифри";
+                    } else {
+                        word = "цифр";
+                    }
+                
+                
+                outlet.innerHTML += ` В вашому числі ${length} ${word}  `;
+                outlet.innerHTML += `<br> Непарні цифри: ${unpairedNumber} `;
+                outlet.innerHTML += `<br>Парні цифри: ${doublesNumber}`;
+                outlet.innerHTML += `<br>Сума цифр: ${sum}`;
+                outlet.innerHTML += "<br><br>Всі цифри:";
+                for (let i = 0; i < number.length; i++) {
+                    outlet.innerHTML += ` <br> ${number.charAt(i)} `
+                }
+            }
+        }
+        
+    </script>
+</body>
+</html>

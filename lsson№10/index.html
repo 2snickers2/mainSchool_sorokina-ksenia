@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="../lesson№1/css/style.css">
+</head>
+<body>
+    <div class="form">
+        <h2 class="contaniner__text-name">Щахівниця</h2>
+    <div class="chessboard" id="board"></div>
+    </div>
+    <script>
+const board = document.getElementById("board");
+
+for (let row = 0; row < 8; row++) {
+    for (let col = 0; col < 8; col++) {
+      const cell = document.createElement("div");
+        cell.classList.add("cell"); 
+        if ((row + col) % 2 === 0) {
+            cell.classList.add("white");
+      } else {
+        cell.classList.add("black");
+      }
+      board.appendChild(cell);
+    }
+  }
+    </script>
+</body>
+</html>

@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="../lesson№1/css/style.css">
+</head>
+<body>
+    <div class="contaniner">
+        <h2 class="contaniner__text-name">Ми вивчаємо JavaScript</h2>
+        <div class="form">
+            <p class="form__name ">Скільки комплементів ви хочете</p>
+            <input class="form__input number" input type="number" placeholder="число">
+            <button class="form__button">Відправити</button>
+            <div class="form__outlet"></div>
+        </div>
+    <script>
+    document.querySelector('.form__button').onclick = myClick;
+
+        function myClick() {
+            let number = parseInt(document.querySelector(".number").value); 
+            let outlet = document.querySelector(".form__outlet");
+            outlet.innerHTML = ""; 
+
+            let compliments = ["brilliant", "charming", "amazing", "talented", "inspiring", "radiant", "confident", "witty", "creative", "kind", "exceptional", "unique", "smart", "thoughtful", "strong"];
+            let animals = ["dog", "cat", "elephant", "tiger", "lion", "giraffe", "zebra", "rabbit", "kangaroo", "panda", "bear", "wolf", "fox", "monkey", "dolphin", "whale", "eagle", "parrot", "crocodile", "penguin"];
+            let colors = ["red", "blue", "green", "yellow", "purple", "orange", "pink", "turquoise", "gold", "silver", "violet", "indigo", "cyan", "magenta", "brown", "black", "white", "gray", "beige"];
+
+            for (let i = 0; i < number; i++) { 
+                let randCompliments = compliments[Math.floor(Math.random() * compliments.length)];
+                let randAnimals = animals[Math.floor(Math.random() * animals.length)];
+                let randColor = colors[Math.floor(Math.random() * colors.length)];
+
+                outlet.innerHTML += `<p>${i + 1}) You're so ${randCompliments} as a <span style="color:${randColor} "> ${randAnimals}!</p>`;
+            }
+        }
+
+        
+ 
+
+    </script>
+</body>
+</html>

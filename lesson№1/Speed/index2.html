@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JavaScript</title>
+    <link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+    <div class="container">
+        <h2 class="contaniner__text-name">Задача на швидкість</h2>
+        <div class="form">
+            <p class="form__name">Введіть відстань/км</p>
+            <input class="form__input distance" input type="number" placeholder="км">
+            <p class="form__name ">Введіть час/год</p>
+            <input class="form__input time" input type="number" placeholder="год">
+            <button class="form__button">Відправити</button>
+            <div class="form__outlet"></div>
+        </div>
+        <script>
+            document.querySelector('.form__button').onclick = myClick;
+            function myClick(){
+            let distance =+ document.querySelector('.distance').value;
+            let time =+ document.querySelector('.time').value;
+            let outlet = document.querySelector(".form__outlet");
+            outlet.innerHTML = "";
+
+            if(time <= 0 ){
+                document.querySelector(".form__outlet").innerHTML += 'Час повинен бути більші за 0 <br>';
+            }else{
+                let speed = distance / time
+                document.querySelector(".form__outlet").innerHTML += `Відстань = ${distance}км <br>`;
+                document.querySelector(".form__outlet").innerHTML += `Час = ${time} год <br>`
+                document.querySelector(".form__outlet").innerHTML += ` Швидкість = ${speed} км/год <br>`
+            }
+            
+
+        }
+        </script>
+    </div>  
+</body>
+</html>

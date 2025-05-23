@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fibonache</title>
+    <link rel="stylesheet" href="../../lesson№1/css/style.css">
+</head>
+<body>
+    <div class="contaniner">
+        <h2 class="contaniner__text-name">Ми вивчаємо JavaScript</h2>
+        <div class="form">
+            <p class="form__name ">Ведіть кл-ть елементів</p>
+            <input class="form__input fibNumber" type="number" placeholder="см">
+            <button class="form__button">Відправити</button>
+            <div class="form__outlet"></div>
+        </div>
+    <script>
+        document.querySelector('.form__button').onclick = myClick;
+            function myClick() {
+                let number = document.querySelector('.fibNumber').value;
+                let outlet = document.querySelector(".form__outlet");
+                outlet.innerHTML = "";
+                number = +(number)
+              
+                function fib(n) {
+                    let a = 1;
+                    let b = 1;
+                    let output = "1";
+                    if (n > 1) {
+                        output += ", 1"; // друге число Фібоначчі
+                    }
+
+                    for (let i = 3; i <= n; i++) {
+                        let c = a + b;
+                        a = b;
+                        b = c;
+                        output += `, ${b}`;
+                    }
+
+                    return output;
+                }
+                if (!isNaN(number) && number > 0) {
+                    document.querySelector(".form__outlet").innerHTML += `Перші ${number} чисел Фібоначчі: ${ fib(number) }`;
+                   
+                } else {
+                    document.querySelector(".form__outlet").innerHTML += `Будь ласка, введіть додатнє ціле число`;
+
+                }
+            }
+    </script>
+</body>
+</html>
