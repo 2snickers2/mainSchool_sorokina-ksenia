@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8" />
+    <title>Столиця європейської країни</title>
+    <link rel="stylesheet" href="../lesson№1/css/style.css">
+</head>
+<body>
+<div class="container">
+    <h2 class="contaniner__text-name">Знаходження столиці</h2>
+    <div class="form">
+    <h3 class="form__exercise">Введіть європейську країну та дізнайтесь її столицю</h3>
+    <input type="text" class="form__input" id="countryInput" placeholder="Введіть країну" />
+    <button class="form__button" onclick="findCapital()">Відправити</button>
+
+    <div id="form__outlet"></div>
+    </div>
+    <div class="arrows">
+    <a href="../lesson№22/index.html"><img class=" arrow-img arrow__left" src="../../img/arrow.png" alt=""></a>
+    <a href="../index.html"><img src="../../img/icons8-главная-20.png" alt=""></a>
+    <a href="../lesson№24/index.html"><img class="arrow-img" src="../../img/arrow.png" alt=""></a>
+</div>
+</div>
+<script>
+    const europeCapitals = {
+        "австрія": "Відень",
+        "бельгія": "Брюссель",
+        "болгарія": "Софія",
+        "хорватія": "Загреб",
+        "кіпр": "Нікосія",
+        "чехія": "Прага",
+        "данія": "Копенгаген",
+        "естонія": "Таллінн",
+        "фінляндія": "Гельсінкі",
+        "франція": "Париж",
+        "німецька": "Берлін",
+        "нідерланди": "Амстердам",
+        "угорщина": "Будапешт",
+        "ірландія": "Дублін",
+        "італія": "Рим",
+        "латвія": "Рига",
+        "литва": "Вільнюс",
+        "люксембург": "Люксембург",
+        "мальта": "Валлетта",
+        "молдова": "Кишинів",
+        "монте-негро": "Подгориця",
+        "ніорвегія": "Осло",
+        "польща": "Варшава",
+        "португалія": "Лісабон",
+        "румунія": "Бухарест",
+        "сербія": "Белград",
+        "словацька": "Братислава",
+        "словенія": "Любляна",
+        "іспанія": "Мадрид",
+        "швеція": "Стокгольм",
+        "швейцарія": "Берн",
+        "україна": "Київ",
+        "обʼєднане королівство": "Лондон",
+        "вірменія": "Єреван",
+        "албанія": "Тирана",
+        "андорра": "Андорра-ла-Велья",
+        "білорусь": "Мінськ",
+        "боснія і герцеговина": "Сараєво",
+        "грузія": "Тбілісі",
+        "ісландія": "Рейкʼявік",
+        "латвія": "Рига",
+        "литва": "Вільнюс",
+        "македонія": "Скопʼє",
+        "сан-марино": "Сан-Марино",
+    };
+
+    const capitalsSet = new Set(Object.values(europeCapitals).map(city => city.toLowerCase()));
+
+    function findCapital() {
+        const input = document.getElementById("countryInput").value.trim().toLowerCase();
+        const result = document.getElementById("form__outlet");
+
+        if (input === "") {
+            result.textContent = "Введіть назву країни!";
+            return;
+        }
+
+        if (capitalsSet.has(input)) {
+            result.textContent = "Ви ввели місто, а не країну. Будь ласка, введіть назву країни.";
+            return;
+        }
+
+        if (input in europeCapitals) {
+            result.textContent = `Столиця країни ${capitalizeWords(input)} — ${europeCapitals[input]}`;
+        } else {
+            result.textContent = "Такої європейської країни не знайдено.";
+        }
+    }
+
+    function capitalizeWords(str) {
+        return str.split(" ").map(word => word.charAt(0).toUpperCase() + word.slice(1)).join(" ");
+    }
+</script>
+
+</body>
+</html>

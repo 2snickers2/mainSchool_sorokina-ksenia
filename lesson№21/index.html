@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../lesson№1/css/style.css">
+    <title>Document</title>
+</head>
+<body>
+    <div class="contaniner">
+    <h2 class="contaniner__text-name">Анімація по колу</h2>
+    <div class="form">
+      <canvas id="quidditch"></canvas>
+      </div>
+       <div class="arrows">
+    <a href="../lesson№20/index.html"><img class=" arrow-img arrow__left" src="../../img/arrow.png" alt=""></a>
+    <a href="../index.html"><img src="../../img/icons8-главная-20.png" alt=""></a>
+    <a href="../lesson№22/index.html"><img class="arrow-img" src="../../img/arrow.png" alt=""></a>
+</div>
+</div>
+  <script>
+    const canvas = document.getElementById('quidditch');
+    const ctx = canvas.getContext('2d');
+
+    canvas.width = window.innerWidth;
+    canvas.height = window.innerHeight;
+
+    const harryImg = new Image();
+    const ronImg = new Image();
+    const snitchImg = new Image();
+
+    harryImg.src = 'harry_in_boom.png';
+    ronImg.src = 'ron_in_brom.png';
+    snitchImg.src = 'snitch.png';
+
+    let angle = 0;
+    const radius = 200;
+    const centerX = canvas.width / 2;
+    const centerY = canvas.height / 2;
+
+    function draw() {
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+      // Calculate positions
+      const harryX = centerX + radius * Math.cos(angle);
+      const harryY = centerY + radius * Math.sin(angle);
+
+      const snitchX = centerX + radius * Math.cos(angle + (2 * Math.PI / 3)); // +120°
+      const snitchY = centerY + radius * Math.sin(angle + (2 * Math.PI / 3));
+
+      const ronX = centerX + radius * Math.cos(angle + (4 * Math.PI / 3)); // +240°
+      const ronY = centerY + radius * Math.sin(angle + (4 * Math.PI / 3));
+
+      // Draw characters
+      ctx.drawImage(harryImg, harryX - 50, harryY - 80, 160, 160);
+      ctx.drawImage(snitchImg, snitchX - 20, snitchY - 60, 140, 140);
+      ctx.drawImage(ronImg, ronX - 50, ronY - 80, 160, 160);
+
+      angle += 0.01; // Adjust speed as needed
+      requestAnimationFrame(draw);
+    }
+
+    // Start animation when all images are loaded
+    let loaded = 0;
+    [harryImg, ronImg, snitchImg].forEach(img => {
+      img.onload = () => {
+        loaded++;
+        if (loaded === 3) draw();
+      };
+    });
+  </script>
+</body>
+</html>

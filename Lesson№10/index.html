@@ -4,52 +4,73 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <link rel="stylesheet" href="../lesson№1/css/style.css">
 </head>
 <body>
-    <canvas id="myCanvas" width="500" height="500" style="border:1px solid #949494;">
-        Your browser does not support the HTML5 canvas tag.</canvas>
-    <script>
-        let c = document.getElementById("myCanvas");
-        let cxt = c.getContext("2d")
-        // cxt.fillStyle = "rgb(200, 0, 0)";
-        let colors = ["red", "blue", "green", "yellow", "purple", "orange", "pink", "turquoise", "gold", "silver", "violet", "indigo", "cyan", "magenta", "brown", "black", "white", "gray", "beige"];
-        let a =1
-        let = r,g,b
+    <div class="contaniner">
+        <h2 class="contaniner__text-name">Перевірка на спам</h2>
+<div class="form">
+    <h3 class="form__exercise">Якщо в повідомленні буде слова "реклама" або "безкоштов", то буде повідомлення про спам</h3>
+    <input type="text" class="form__input" placeholder="Ваше повідомлення">
+    <button class="form__button">Надіслати</button>
+    <div class="form__outlet"></div>
+</div>
+<div class="arrows">
+    <a href="../Lesson№9/index.html"><img class=" arrow-img arrow__left" src="../../img/arrow.png" alt=""></a>
+    <a href="../index.html"><img src="../../img/icons8-главная-20.png" alt=""></a>
+    <a href="../lesson№11/index.html"><img class="arrow-img" src="../../img/arrow.png" alt=""></a>
 
-        let x=15, y= 15
-        for(let i = 0; i < 10; i++){
-            r = Math.random()
-            cxt.fillRect(x, y, 50, 50);
-            let randColor = colors[Math.floor(Math.random() * colors.length)];
-            cxt.fillStyle = randColor
+</div>
+</div>
 
-            x = x+15;
-            y = y+15;
+<script>
+    let sendButton = document.querySelector('.form__button');
+    let status = document.querySelector('.form__outlet');
+
+    sendButton.onclick = function () {
+        let message = document.querySelector('.form__input').value.trim();
+
+        if (message === "") {
+            status.innerHTML = "Повідомлення не може бути порожнім.";
+            return;
         }
 
-        // let cxt = c.getContext("2d");
-        cxt.fillStyle = "rgb(0 0 180)";
-        cxt.fillRect(10, 10, 50, 50);
+        // Нормалізація (замінюємо цифри на схожі букви)
+        let normalized = message
+            .toLowerCase()
+            .replace(/0/g, 'o')
+            .replace(/1/g, 'i')
+            .replace(/3/g, 'e')
+            .replace(/4/g, 'a')
+            .replace(/5/g, 's')
+            .replace(/6/g, 'b')
+            .replace(/7/g, 't')
+            .replace(/8/g, 'b')
+            .replace(/9/g, 'g');
 
-        cxt.fillStyle = "rgb(0 0 200)";
-        cxt.fillRect(30, 30, 50, 50);
+        const spamPatterns = [
+            /реклама/,         
+            /reklama/,         
+            /безкоштовно/,      
+            /bezkoshtovno/,   
+            /реклам[aо]*\b/,              
+            /reklam[aо]*\b/,             
+            /безкоштов\w*/i,             
+            /bezkoshtovn\w*/i  
+        ];
 
-        cxt.fillStyle = "rgb(0 0 250)";
-        cxt.fillRect(50, 50, 50, 50);
-        cxt.lineWidth = 6;
-     cxt.strokeStyle = "red";
-        cxt.setLineDash([1, 5, 10, 15, 20]);
-        cxt.strokeRect(10, 10, 50, 50);
+        for (let pattern of spamPatterns) {
+            if (pattern.test(normalized)) {
+                status.innerHTML = "Повідомлення містить спам ";
+                return;
+            }
+        }
 
-        cxt.strokeStyle = "green";
-        cxt.setLineDash([20, 3, 3, 3, 3, 3, 3, 3]);
-        cxt.strokeRect(30, 30, 50, 50);
-        cxt.globalAlpha = 0.5;
+        status.innerHTML = "Повідомлення відправлено!";
+        console.log("Надіслано повідомлення:", message);
+    };
+</script>
 
-        cxt.strokeStyle = "black";
-        cxt.setLineDash([2, 2, 10, 5]);
-        cxt.strokeRect(50, 50, 50, 50);
-
-    </script>
+    
 </body>
 </html>

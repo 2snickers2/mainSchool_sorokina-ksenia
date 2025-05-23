@@ -8,47 +8,62 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>JavaScript</title>
-    <style>
-        body {
-            background-color: darkolivegreen;
-            font-size: 50px;
-            color: #9ff;
-        }
-    </style>
+    <link rel="stylesheet" href="../lesson№1/css/style.css">
 </head>
 
 <body>
+    <div class="container">
+        <h2 class="container__text-name">Ми вивчаємо JavaScript</h2>
+        <div class="form">
+            <p class="form__name">Введіть першу сторону трикутника</p>
+            <input class="form__input a" type="number" placeholder="число">
+            <p class="form__name">Введіть другу сторону трикутника</p>
+            <input class="form__input b" type="number" placeholder="число">
+            <p class="form__name">Введіть третю сторону трикутника</p>
+            <input class="form__input c" type="number" placeholder="число">
+            <button class="form__button">Відправити</button>
+            <div class="form__outlet"></div>
+        </div>
+    </div>
+    
     <script>
-            let a = prompt("Введіть першу сторону трикутника", 3);
-            let b = prompt("Введіть другу сторону трикутника", 4);
-            let c = prompt("Введіть третю сторону трикутника", 5);
-
-            if (a ==+ null || b === null || c === null) {
-                document.write(`Всі поля повинні бути заповнені`);
+        document.querySelector('.form__button').onclick = myClick;
+    
+        function myClick() {
+            let a = document.querySelector(".a").value;
+            let b = document.querySelector(".b").value;
+            let c = document.querySelector(".c").value;
+            let outlet = document.querySelector(".form__outlet");
+            outlet.innerHTML = "";
+    
+            if (!a || !b || !c) {
+                outlet.innerHTML += `Всі поля повинні бути заповнені`;
             } else if (isNaN(a) || isNaN(b) || isNaN(c)) {
-                document.write(`Ви вводите не число`);
+                outlet.innerHTML += `Ви вводите не число`;
             } else {
-                a = +(a);
-                b = +(b);
-                c = +(c);
-
+                a = parseFloat(a);
+                b = parseFloat(b);
+                c = parseFloat(c);
+    
                 if (a <= 0 || b <= 0 || c <= 0) {
-                    document.write("Всі сторони повинні бути більше за 0");
+                    outlet.innerHTML += `Всі сторони повинні бути більше за 0`;
                 } else if ((a + b <= c) || (b + c <= a) || (a + c <= b)) {
-                    document.write("З таких сторін не можна скласти трикутник");
+                    outlet.innerHTML += `З таких сторін не можна скласти трикутник`;
                 } else {
-                    document.write(`Перша сторона трикутника ${a} <br>`);
-                    document.write(`Друга сторона трикутника ${b} <br>`);
-                    document.write(`Третя сторона трикутника ${c} <br>`);
-
+                    outlet.innerHTML += `Перша сторона трикутника: ${a} <br>`;
+                    outlet.innerHTML += `Друга сторона трикутника: ${b} <br>`;
+                    outlet.innerHTML += `Третя сторона трикутника: ${c} <br>`;
+    
                     let P = a + b + c;
                     let halfP = P / 2;
                     let S = Math.sqrt(halfP * (halfP - a) * (halfP - b) * (halfP - c));
-                    document.write(`Периметр трикутника дорівнює ${P} <br>`);
-                    document.write(`Площа трикутника дорівнює ${S} <br>`);
+                    outlet.innerHTML += `Периметр трикутника: ${P} <br>`;
+                    outlet.innerHTML += `Площа трикутника: ${S.toFixed(2)} <br>`;
                 }
             }
+        }
     </script>
+    
 </body>
 
 </html>

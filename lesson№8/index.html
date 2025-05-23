@@ -7,34 +7,73 @@
     <link rel="stylesheet" href="../lesson№1/css/style.css">
 </head>
 <body>
-    <div class="content">
-        <h2 class="contaniner__text-name">Посилання на роботу</h2>
-        
-        <div class="button__link">
-            <a href="../lesson№1/Triangle/index1.html " target="_blank">lesson№1</a>
+    <div class="contaniner">
+        <h2 class="contaniner__text-name">Вгадування числа</h2>
+        <div class="form">
+            <h3 class="form__exercise">Введіть 2 числа і вгадайте загадане в цьому діапазоні </h3>
+            <input type="text" class="numberMin form__input" placeholder="мінімальне значення">
+            <input type="text" class="numberMax form__input" placeholder="мінімальне значення">
+            <button class="form__button">Загадати число</button>
+            <div class="result" style="display: none;">
+                <p class="message"></p>
+                <input type="text" class="randomResult form__input" placeholder="Введіть ваш варіант">
+                <button class="check">Перевірити</button>
+            </div>
+            <div class="outlet"></div>
         </div>
-        <div class="button__link">
-            <a href="../lesson№2/index.html" target="_blank">lesson№2</a>
+        <div class="arrows">
+            <a href="../lesson№7/index.html"><img class=" arrow-img arrow__left" src="../../img/arrow.png" alt=""></a>
+            <a href="../index.html"><img src="../../img/icons8-главная-20.png" alt=""></a>
+            <a href="../Lesson№9/index.html"><img class="arrow-img" src="../../img/arrow.png" alt=""></a>
         </div>
-        <div class="button__link">
-            <a href="../lesson№3/fibonachi/index.html " target="_blank">lesson№3</a>
         </div>
-        <div class="button__link">
-            <a href="../lesson№4/number generation/index.html" target="_blank">lesson№4</a>
-        </div>
-        <div class="button__link">
-            <a href="../lesson№5/index.html " target="_blank">lesson№5</a>
-        </div>
-        <div class="button__link">
-            <a href="../lesson№6/index.html " target="_blank">lesson№6</a>
-        </div>
-        <div class="button__link">
-            <a href="../lesson№7/index.html " target="_blank">lesson№7</a>
-        </div>
-        <div class="button__link">
-            <a href="../lesson№8/index.html " target="_blank">lesson№8</a>
-        </div>
-        
-    </div>
+    
+        <script>
+            let hiddenNumber;
+            let count = 0;
+    
+            document.querySelector('.form__button').onclick = function () {
+                let numberMax = parseInt(document.querySelector(".numberMax").value);
+                let numberMin = parseInt(document.querySelector(".numberMin").value);
+                let outlet = document.querySelector('.outlet');
+                outlet.innerHTML = "";
+    
+                if (isNaN(numberMin) || isNaN(numberMax)) {
+                    outlet.innerHTML = "Введіть правильні числові значення.";
+                    return;
+                }
+                if (numberMin >= numberMax) {
+                    outlet.innerHTML = "Мінімальне значення повинно бути менше за максимальне.";
+                    return;
+                }
+    
+                hiddenNumber = Math.floor(Math.random() * (numberMax - numberMin + 1)) + numberMin;
+                document.querySelector(".message").innerHTML = `Спробуйте вгадати число від ${numberMin} до ${numberMax}`;
+                document.querySelector(".result").style.display = "block";
+                count = 0;
+            };
+    
+            document.querySelector('.check').onclick = function () {
+                let addNumberInput = document.querySelector(".randomResult");
+                let addNumber = parseInt(addNumberInput.value);
+                let outlet = document.querySelector('.outlet');
+    
+                if (isNaN(addNumber)) {
+                    outlet.innerHTML = "Введіть коректне число.";
+                    return;
+                }
+    
+                count++;
+    
+                if (addNumber < hiddenNumber) {
+                    outlet.innerHTML = "Загадане число більше. Спробуйте ще раз.";
+                } else if (addNumber > hiddenNumber) {
+                    outlet.innerHTML = "Загадане число менше. Спробуйте ще раз.";
+                } else {
+                    outlet.innerHTML = `Ви вгадали! Загадане число: ${hiddenNumber}. Кількість спроб: ${count}`;
+                    document.querySelector(".result").style.display = "none";
+                }
+            };
+        </script>
 </body>
 </html>

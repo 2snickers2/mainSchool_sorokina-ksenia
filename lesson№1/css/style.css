@@ -5,11 +5,12 @@
     padding: 0;
 }
 body{
-    background-color: #1b120e;
+    background-color: rgb(31, 31, 31);
+
     font-family: "Montserrat", serif;
     font-size: 40px;
     color: #ffffff;
-    /* background-image: url(../img/body.jpg);
+    /* background-image: url(../../img/body.jpg);
     
     background-size: cover; */
 }
@@ -31,11 +32,8 @@ canvas{
     margin-top: 30px ; 
     padding: 25px;
     border-radius: 20px;
-    background-color: #452c16;
-    /* background: rgba(255, 255, 255, 0.2);
-    backdrop-filter: blur(10px);
-    border: 1px solid rgba(255, 255, 255, 0.3);
-    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1); */
+    background: linear-gradient(to bottom, #3D0000, #000000);
+ 
 
 }
 
@@ -58,6 +56,10 @@ canvas{
     transition: all .35s;
     color: #ab8463;
 
+}
+.form__exercise{
+    font-weight: 500;
+    margin-bottom: 20px;
 }
 .form__button{
     width: 120px;
@@ -93,11 +95,82 @@ canvas{
     margin-top: 20px;
     text-align: center;
 }
+.arrows {
+position: relative;
+    width: 19%;
+    display: flex;
+    justify-content: space-between;
+    margin: 0 auto;
+    margin-top: 10px;
+    font-size: 25px;
+  }
+  
+  .arrow__left{
+    transform: rotate(180deg);
+  }
+.arrow-img{
+    width: 25px;
+    height: 25px;
+}
+.arrows-matrix{
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translate(-50%);
+}
+.arrow-matrix{
+    border-radius: 50%;
+    background-color: rgba(255, 255, 255, 0.567);
+    padding: 10px;
+}
+.arrows__bottom{
+    width: 10%;
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translate(-50%);
+}
 a{
     text-decoration: none;
     font-size: 15px;
     color: #f9dec7;
     text-align: center;
+}
+.heart {
+  position: absolute;
+  top: -20px;
+  width: 20px;
+  height: 20px;
+  background: #3D0000;
+  transform: rotate(45deg);
+  animation: fall linear forwards;
+  animation-duration: 5s;
+}
+
+.heart::before,
+.heart::after {
+  content: '';
+  position: absolute;
+  width: 20px;
+  height: 20px;
+  background: #3D0000;
+  border-radius: 50%;
+}
+
+.heart::before {
+  top: -10px;
+  left: 0;
+}
+
+.heart::after {
+  left: -10px;
+  top: 0;
+}
+
+@keyframes fall {
+  to {
+    transform: translateY(150vh) rotate(45deg);
+  }
 }
 @media screen and (max-width: 1023px) {
     .form__input {

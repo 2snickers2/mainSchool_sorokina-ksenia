@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+  <meta charset="UTF-8">
+  <title>Сердцепад на CSS</title>
+  <link rel="stylesheet" href="../lesson№1/css/style.css">
+  <style>
+
+
+ body {
+  background-color: #787878;
+  overflow: hidden;
+  margin: 0;
+  height: 100vh;
+}
+  </style>
+</head>
+<body>
+
+<div class="arrows arrows__bottom">
+        <a href="../lesson№24/index.html"><img class="arrow-img arrow__left" src="../../img/arrow.png" alt=""></a>
+        <a href="../index.html"><img src="../../img/icons8-главная-20.png" alt=""></a>
+
+    </div>
+<script>
+  function createHeart() {
+    const heart = document.createElement('div');
+    heart.classList.add('heart');
+    heart.style.width = '20px';
+heart.style.height = '20px';
+    heart.style.left = Math.random() * window.innerWidth + 'px';
+    heart.style.animationDuration = (Math.random() * 3 + 2) + 's'
+
+    document.body.appendChild(heart);
+
+    setTimeout(() => {
+      heart.remove();
+    }, 5000);
+  }
+
+  setInterval(createHeart, 150);
+</script>
+
+</body>
+</html>

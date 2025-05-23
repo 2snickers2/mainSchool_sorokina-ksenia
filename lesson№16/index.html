@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="../lesson№1/css/style.css">
+</head>
+<body>
+    <div class="contaniner">
+        <h2 class="contaniner__text-name">Сходинки із символів</h2>
+    <div class="form">
+        <h3 class="form__exercise">Введіть символ, кількість і побачите сходинки</h3>
+        <input type="text" class="numberSteps form__input" placeholder="кількість сходинок">
+        <input type="text" class="symbol form__input" placeholder="будь-який символ">
+        <button class="form__button">Відправити</button>
+        <div class="form__outlet"></div>
+    </div>
+    <div class="arrows arrows">
+        <a href="../lesson№15/index.html"><img class=" arrow-img   arrow__left" src="../../img/arrow.png" alt=""></a>
+        <a href="../index.html"><img src="../../img/icons8-главная-20.png" alt=""></a>
+        <a href="../lesson№4/number generation/index.html"><img class="arrow-img " src="../../img/arrow.png" alt=""></a>
+    </div>
+    </div>
+    
+    <script>
+        document.querySelector(".form__button").onclick = myClick;
+    
+        function myClick() {
+            let symbol = document.querySelector(".symbol").value;
+            let numberSteps = parseInt(document.querySelector(".numberSteps").value);
+            let output = '';
+
+            if (isNaN(numberSteps) || numberSteps <= 0) {
+                document.querySelector(".form__outlet").innerHTML = "Будь ласка, введіть коректну кількість сходинок.";
+                return;
+            }
+            if (!symbol) {
+                document.querySelector(".form__outlet").innerHTML = "Будь ласка, введіть символ.";
+                return;
+            }
+            for (let i = 1; i <= numberSteps; i++) {
+                let currentSymbols = symbol.repeat(i);
+                output += currentSymbols + '<br>';
+            }
+    
+            document.querySelector(".form__outlet").innerHTML = output;
+        }
+    </script>
+    
+</body>
+</html>

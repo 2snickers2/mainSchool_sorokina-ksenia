@@ -1,0 +1,69 @@
+
+<!DOCTYPE html>
+<html lang="ru">
+    <head>
+        <meta charset="UTF-8">
+        <title>Clickr</title>
+        <link href="https://fonts.googleapis.com/css?family=Press+Start+2P" rel="stylesheet">
+        <link rel="stylesheet" href="../lesson№1/css/style.css">
+    </head>
+
+    <body>
+        <div id="container">
+            <h2 class="contaniner__text-name">Кликер</h2>
+            <div class="form">
+            <h3 class="form__exercise">Натисніть на кнопку максимальну кількість раз за 5 секунд</h3>
+            <div id="display"></div>
+            <button class="form__button">Clicker</button>
+            <div id="form__outlet"></div>
+            <div id="counter">0</div>
+            </div>
+            <div class="arrows">
+    <a href="../lesson№21/index.html"><img class=" arrow-img arrow__left" src="../../img/arrow.png" alt=""></a>
+    <a href="../index.html"><img src="../../img/icons8-главная-20.png" alt=""></a>
+    <a href="../lesson№23/index.html"><img class="arrow-img" src="../../img/arrow.png" alt=""></a>
+</div>
+        </div>
+      <script>
+    let clicks = 0;
+    const TIMEOUT = 5000;
+
+    const display = document.querySelector('#display');
+    const button = document.querySelector(".form__button");
+    const counter = document.querySelector('#counter');
+
+    button.onclick = start;
+
+    function start() {
+        clicks = 0;
+        counter.textContent = clicks;
+
+        const startTime = Date.now();
+        display.textContent = formatTime(TIMEOUT);
+
+        button.onclick = () => {
+            clicks++;
+            counter.textContent = clicks;
+        };
+
+        const interval = setInterval(() => {
+            const delta = Date.now() - startTime;
+            display.textContent = formatTime(TIMEOUT - delta);
+        }, 100);
+
+        const timeout = setTimeout(() => {
+            button.onclick = null;
+            display.textContent = 'The End';
+
+            clearInterval(interval);
+            clearTimeout(timeout);
+        }, TIMEOUT);
+    }
+
+    function formatTime(ms) {
+        return Number.parseFloat(ms / 1000).toFixed(2);
+    }
+</script>
+</script>
+    </body>
+</html>

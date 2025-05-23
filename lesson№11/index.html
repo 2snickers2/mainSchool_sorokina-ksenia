@@ -7,55 +7,70 @@
     <link rel="stylesheet" href="../lesson№1/css/style.css">
 </head>
 <body>
+    <div class="contaniner">
+        <h2 class="contaniner__text-name">Генерація шестикутників на канвасі</h2>
     <div class="form">
-        <h2>Генерація шестикутників на канвасі</h2>
-        <p class="form__name">Введіть кількість шестикутників</p>
-        <input class="form__input text" id="hexagonCount" type="text" placeholder="Введіть кількість">
+         <h3 class="form__exercise">Введіть кількість шестикутників яку хочете побачити</h3>
+        
+        <input class="form__input text" id="hexagonCount" type="text" placeholder="Кіл-ть шестикутників">
         <button class="form__button" onclick="generateHexagons()">Відправити</button>
 
-        <canvas id="myCanvas" width="500" height="500" style="border:1px solid #000000;"></canvas>
+        <canvas id="myCanvas" width="500" height="300" style="border:1px solid #000000;"></canvas>
     </div>
-   <script>
-    function generateHexagons() {
-        let canvas = document.getElementById('myCanvas');
-        let ctx = canvas.getContext('2d');
-        let numberOfHexagons = parseInt(document.getElementById('hexagonCount').value);
-
-        ctx.clearRect(0, 0, canvas.width, canvas.height); 
-
-        for (let j = 0; j < numberOfHexagons; j++) {
-            drawHexagon(ctx, canvas.width, canvas.height);
-        }
-    }
-
-    function drawHexagon(ctx, canvasWidth, canvasHeight) {
-        let x = Math.random() * canvasWidth;
-        let y = Math.random() * canvasHeight;
-        let size = Math.random() * 100 + 1; 
-        let color = getRandomColor(); 
-
-        ctx.beginPath();
-
-        for (let i = 0; i < 6; i++) {
-            let angle = (Math.PI / 3) * i; 
-            let dx = x + size * Math.cos(angle);
-            let dy = y + size * Math.sin(angle);
-            if (i === 0) {
-                ctx.moveTo(dx, dy);
-            } else {
-                ctx.lineTo(dx, dy);
+    <div class="arrows">
+        <a href="../Lesson№10/index.html"><img class=" arrow-img arrow__left" src="../../img/arrow.png" alt=""></a>
+        <a href="../index.html"><img src="../../img/icons8-главная-20.png" alt=""></a>
+        <a href="../lesson№12/index.html"><img class="arrow-img" src="../../img/arrow.png" alt=""></a>
+    </div>
+    </div>
+    <script>
+        function generateHexagons() {
+            let canvas = document.getElementById('myCanvas');
+            let ctx = canvas.getContext('2d');
+            let numberOfHexagons = parseInt(document.getElementById('hexagonCount').value);
+            let outlet = document.querySelector('.form__outlet');
+    
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+    
+            if (isNaN(numberOfHexagons) || numberOfHexagons <= 0) {
+                outlet.innerHTML = `Введіть коректну кількість (позитивне число`;
+                return;
+            }
+    
+            for (let j = 0; j < numberOfHexagons; j++) {
+                drawHexagon(ctx, canvas.width, canvas.height);
             }
         }
-
-        ctx.closePath();
-        ctx.fillStyle = color;
-        ctx.fill();
-    }
-
-    function getRandomColor() {
-        return '#' + (Math.random() * 0xFFFFFF << 0).toString(16);
-    }
-</script>
-</script>
+    
+        function drawHexagon(ctx, canvasWidth, canvasHeight) {
+            let size = Math.random() * 30 + 20; // 20–50 px
+            let margin = size + 5;
+            let x = Math.random() * (canvasWidth - 2 * margin) + margin;
+            let y = Math.random() * (canvasHeight - 2 * margin) + margin;
+            let color = getRandomColor();
+    
+            ctx.beginPath();
+            for (let i = 0; i < 6; i++) {
+                let angle = (Math.PI / 3) * i;
+                let dx = x + size * Math.cos(angle);
+                let dy = y + size * Math.sin(angle);
+                if (i === 0) {
+                    ctx.moveTo(dx, dy);
+                } else {
+                    ctx.lineTo(dx, dy);
+                }
+            }
+            ctx.closePath();
+            ctx.fillStyle = color;
+            ctx.fill();
+            ctx.strokeStyle = "#000";
+            ctx.stroke();
+        }
+    
+        function getRandomColor() {
+            return '#' + Math.floor(Math.random() * 16777215).toString(16).padStart(6, '0');
+        }
+    </script>
+    
 </body>
 </html>

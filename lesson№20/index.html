@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="../lesson№1/css/style.css">
+    <style>
+        #canvas{
+            position: relative;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+        }
+    </style>
+</head>
+<body>
+    <div class="contaniner">
+    
+    <h2 class="contaniner__text-name">Анімація по колу</h2>
+    <canvas id="canvas"></canvas>
+     <div class="arrows">
+    <a href="../lesson№19/index.html"><img class=" arrow-img arrow__left" src="../../img/arrow.png" alt=""></a>
+    <a href="../index.html"><img src="../../img/icons8-главная-20.png" alt=""></a>
+    <a href="../lesson№21/index.html"><img class="arrow-img" src="../../img/arrow.png" alt=""></a>
+</div>
+    </div>
+    <script>
+        let canvas = document.getElementById('canvas');
+        let ctx = canvas.getContext('2d');
+        canvas.width = window.innerWidth;
+        canvas.height = window.innerHeight;
+        let size = 10;
+        let positionX;
+        let positionY;
+        let count = 0;
+        let scale = 10; 
+        let colors = ["red", "blue", "green", "yellow", "purple", "orange", "pink", "turquoise", "gold", "silver", "violet", "indigo", "cyan", "magenta", "brown", "black", "gray", "beige"];
+       
+
+
+        function draw(){
+            // ctx.clearRect(0,0, canvas.width, canvas.height)
+            // size = size + 0.05;
+            let angle = count * 1;
+            let radius = scale*Math.sqrt(count);
+            positionX = radius * Math.sin(angle) + canvas.width/2;
+            positionY = radius * Math.cos(angle) + canvas.height/2;
+            ctx.beginPath();
+            ctx.arc(positionX, positionY,size, 0, Math.PI*2, true);
+            ctx.closePath();
+            ctx.strokeStyle = "#FFF";
+            ctx.stroke();
+            
+            let color = colors[Math.floor(Math.random() * colors.length)];
+            ctx.fillStyle = color;
+
+            ctx.fill();
+
+            count++;
+        }
+        function animate(){
+            draw();
+            if(count > 1000) return;
+            window.requestAnimationFrame(animate)
+            
+           
+        }
+        animate();
+      
+    </script>
+</body>
+</html>

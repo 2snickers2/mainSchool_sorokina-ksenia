@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+  <meta charset="UTF-8">
+  <title>Повторення hello</title>
+  <link rel="stylesheet" href="../lesson№1/css/style.css">
+</head>
+<body>
+<div class="contaniner">
+        <h2 class="contaniner__text-name">Виведення "hello"</h2>
+    <div class="form">
+    <h3 class="form__exercise">Введіть скільки разів хочете побачити слово "hello"? </h3>
+<input type="number" class="form__input" min="1" max="100" placeholder="Введіть число">
+<button class="form__button"  onclick="startTyping()">Почати</button>
+
+<div class="outlet"></div>
+</div>
+<div class="arrows">
+            <a href="../lesson№23/index.html"><img class=" arrow-img arrow__left" src="../../img/arrow.png" alt=""></a>
+            <a href="../index.html"><img src="../../img/icons8-главная-20.png" alt=""></a>
+            <a href="../Lesson№25/index.html"><img class="arrow-img" src="../../img/arrow.png" alt=""></a>
+        </div>
+</div>
+<script>
+  function startTyping() {
+    const count = parseInt(document.querySelector(".form__input").value);
+    let outlet = document.querySelector('.outlet');
+    if (isNaN(count) || count < 1) {
+       outlet.innerHTML = `Будь ласка, введіть коректне число (від 1 і більше)`;
+      return;
+    }
+    outlet.innerHTML = "";
+
+    let current = 1;
+    let charIndex = 0;
+    let message = `${current}. hello`;
+    let lineDiv = document.createElement("div");
+    lineDiv.className = "line";
+    outlet.appendChild(lineDiv);
+
+    const interval = setInterval(() => {
+      lineDiv.textContent += message.charAt(charIndex);
+      charIndex++;
+
+      if (charIndex >= message.length) {
+        current++;
+        if (current > count) {
+          clearInterval(interval);
+        } else {
+          charIndex = 0;
+          message = `${current}. hello`;
+          lineDiv = document.createElement("div");
+          lineDiv.className = "line";
+          outlet.appendChild(lineDiv);
+        }
+      }
+    }, 100);
+  }
+</script>
+
+
+</body>
+</html>
