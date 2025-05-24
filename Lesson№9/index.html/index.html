@@ -9,13 +9,20 @@
 </head>
 
 <body>
-
+<div class="contaniner">
+        <h2 class="contaniner__text-name">Сортування за алфавітом та населенням</h2>
     <div class="form">
         <h2 class="contaniner__text-name">Сортування за алфавітом</h2>
         <div class="form__outlet" id="worldCapitalsAlph"></div>
         <h2 class="contaniner__text-name">Сортування за кількістю населення</h2>
         <div class="form__outlet" id="worldCapitalsNumber"></div>
     </div>
+    <div class="arrows">
+            <a href="../../lesson№8/index.html"><img class=" arrow-img arrow__left" src="../../img/arrow.png" alt=""></a>
+            <a href="../index.html"><img src="../../img/icons8-главная-20.png" alt=""></a>
+            <a href="../../Lesson№10/index.html"><img class="arrow-img" src="../../img/arrow.png" alt=""></a>
+    </div>
+</div>
     <script>
          
         let worldPopulation = {
@@ -123,11 +130,7 @@
 
         let worldCapitalsAlph = Object.keys(worldPopulation).sort();
         let worldCapitalsNumber = Object.keys(worldPopulation).sort((a, b) => worldPopulation[a] - worldPopulation[b]);
-        let count 
-        for (key in worldPopulation){
-            count++
-        }
-        document.writeln(`Всього країн: ${count}`)
+  
         function displayCitiesAlph() {
             let alphaDiv = document.getElementById('worldCapitalsAlph');
             alphaDiv.innerHTML = ''; 
