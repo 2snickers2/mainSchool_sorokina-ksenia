@@ -433,7 +433,9 @@ a {
   .header__contanier{
     margin-bottom: 10px;
   }
-
+  .main-section{
+    height: 100vh;
+  }
   .main-section__student {
     font-size: 14px;
   }
