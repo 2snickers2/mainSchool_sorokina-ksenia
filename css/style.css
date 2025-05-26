@@ -437,6 +437,7 @@ a {
   .header__contanier{
     margin-bottom: 10px;
   }
+<<<<<<< HEAD
   /* .main-section{
     height: 100vh;
   } */
@@ -444,6 +445,9 @@ a {
     position: absolute;
     bottom: 0;
   }
+=======
+
+>>>>>>> 5a820482c6e59f9f6a188d8c1517fa382bfb4cf3
   .main-section__student {
     font-size: 14px;
   }
