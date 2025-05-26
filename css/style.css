@@ -26,18 +26,22 @@ a {
   width: 100%;
   font-family: "Montserrat", serif;
   color: #FFF;
+  
+  max-height: 100%;
 }
-
+ .container__header{
+    height: 100vh;
+ }
 .header {
   position: relative;
   top: 0;
   left: 0;
-  padding-top: 16px;
   background-color: #000000;
 }
 .header__contanier {
   margin-left: 60px;
   margin-bottom: 60px;
+    padding-top: 16px;
 }
 .header__content {
   display: flex;
@@ -404,7 +408,7 @@ a {
   }
 
   .main-section__button-text {
-    display: none; /* ховаємо текст кнопки для економії простору */
+    display: none; 
   }
 
   .about__me {
@@ -433,8 +437,12 @@ a {
   .header__contanier{
     margin-bottom: 10px;
   }
-  .main-section{
+  /* .main-section{
     height: 100vh;
+  } */
+  .main-section__statue{
+    position: absolute;
+    bottom: 0;
   }
   .main-section__student {
     font-size: 14px;
@@ -452,6 +460,9 @@ a {
 
   .about__me-img {
     width: 150px;
+  }
+  .works-item{
+    width: 100%;
   }
 }
 
