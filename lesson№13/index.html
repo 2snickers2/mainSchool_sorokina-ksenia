@@ -10,34 +10,31 @@
   <div class="contaniner">
     <h2 class="contaniner__text-name">Шахівниця</h2>
     <div class="form">
-    <div class="chessboard" id="board"></div>
-    <div class="arrows">
-            <a href="../lesson№12/index.html"><img class=" arrow-img arrow__left" src="../img/arrow.png" alt=""></a>
-            <a href="../index.html"><img src="../../img/icons8-главная-20.png" alt=""></a>
-            <a href="../Lesson№14/index.html"><img class="arrow-img" src="../img/arrow.png" alt=""></a>
-        </div>
+      <div id="board" class="chessboard"></div>
+
+
     </div>
     <div class="arrows">
       <a href="../lesson№12/index.html"><img class=" arrow-img arrow__left" src="../img/arrow.png" alt=""></a>
-      <a href="../index.html"><img src="../img/icons8-главная-20.png" alt=""></a>
+      <a href="../index.html"><img class="arrow-img" src="../img/icons8-главная-20.png" alt=""></a>
       <a href="../lesson№14/index.html"><img class="arrow-img" src="../img/arrow.png" alt=""></a>
   </div>
     </div>
-    <script>
-const board = document.getElementById("board");
+      <script>
+    const board = document.getElementById("board");
 
-for (let row = 0; row < 8; row++) {
-    for (let col = 0; col < 8; col++) {
-      const cell = document.createElement("div");
-        cell.classList.add("cell"); 
+    for (let row = 0; row < 8; row++) {
+      for (let col = 0; col < 8; col++) {
+        const cell = document.createElement("div");
+        cell.classList.add("cell");
         if ((row + col) % 2 === 0) {
-            cell.classList.add("white");
-      } else {
-        cell.classList.add("black");
+          cell.classList.add("white");
+        } else {
+          cell.classList.add("black");
+        }
+        board.appendChild(cell);
       }
-      board.appendChild(cell);
     }
-  }
-    </script>
+  </script>
 </body>
 </html>

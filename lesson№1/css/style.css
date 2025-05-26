@@ -33,7 +33,6 @@ canvas{
     padding: 25px;
     border-radius: 20px;
     background: linear-gradient(to bottom, #3D0000, #000000);
- 
 
 }
 
@@ -97,7 +96,7 @@ canvas{
 }
 .arrows {
 position: relative;
-    width: 19%;
+    width: 200px;
     display: flex;
     justify-content: space-between;
     margin: 0 auto;
@@ -118,11 +117,7 @@ position: relative;
     left: 50%;
     transform: translate(-50%);
 }
-.arrow-matrix{
-    border-radius: 50%;
-    background-color: rgba(255, 255, 255, 0.567);
-    padding: 10px;
-}
+
 .arrows__bottom{
     width: 10%;
     position: absolute;
@@ -190,16 +185,33 @@ a{
        border: 2px solid #333;
    }
 
-   .cell {
-       width: 60px;
-       height: 60px;
-   }
+     .cell {
+        width: 100%;
+        aspect-ratio: 1 / 1;
+    }
 
-   .white {
-       background-color: #fff;
-   }
+    .white {
+        background-color: #fff;
+    }
 
-   .black {
-       background-color: #000;
-   }
+    .black {
+        background-color: #000;
+    }
 
+@media (max-width: 480px) {
+
+    .contaniner{
+        padding: 10px;
+    }
+    .contaniner__text-name{
+        font-size: 32px;
+    }
+    .form{
+        width: auto;
+        font-size: 15px;
+    }
+    .chessboard{
+        grid-template-columns: repeat(8, 30px);
+        grid-template-rows: repeat(8, 30px);
+    }
+}
