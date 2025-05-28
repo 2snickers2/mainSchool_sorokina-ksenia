@@ -477,5 +477,9 @@ a {
   .works-item{
     width: 100%;
   }
+  .works__angel{
+    display:none;
+  }
 }
+
 
