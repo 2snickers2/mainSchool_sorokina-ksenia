@@ -480,6 +480,9 @@ a {
   .works__angel{
     display:none;
   }
+  .works{
+    padding-bottom: 30px;
+  }
 }
 
 
