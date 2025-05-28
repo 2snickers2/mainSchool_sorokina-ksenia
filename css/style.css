@@ -205,6 +205,10 @@ a {
   background-size: contain;
   cursor: pointer;
 }
+.button__arrows{
+  width: 25px;
+  height: 25px;
+}
 .works{
   margin: auto;
   background-color: rgb(31, 31, 31);

@@ -7,14 +7,11 @@
     <link rel="stylesheet" href="../lesson№1/css/style.css">
 </head>
 <style>
-        #train {
-      position: relative;
-      cursor: pointer;
-      
-    }
+
     .form{
         
       height: 500px;
+      overflow: hidden;
     }
     
     
@@ -25,7 +22,7 @@
     <h2 class="contaniner__text-name">Анімація</h2>
   <div class="form">
     <p class="form__name">Натисніть на кнопку та побачите анімацію</p>
-    <img src="harry_in_boom.png" id="train" alt="" style="position: absolute; left: 0; top: 50px; width: 200px; height: 150px;">
+    <img class="harry_in_boom" src="harry_in_boom.png" id="harry" alt="" style="position: absolute; left: 0; top: 50px; ">
     <button class="form__button">Пуск</button>
   </div>
   <div class="arrows">
@@ -38,14 +35,13 @@
   
   <script>
     
-      const train = document.getElementById("train");
       const startButton = document.querySelector (".form__button");
       startButton.onclick = function() {
           let start = Date.now(); 
           let timer = setInterval(function() {
              
               let timePassed = Date.now() - start;
-              train.style.left = timePassed / 5 + 'px'; 
+              harry.style.left = timePassed / 5 + 'px'; 
               if (timePassed > 3000) clearInterval(timer); 
           }, 20);
       }

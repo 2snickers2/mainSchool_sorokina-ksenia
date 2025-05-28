@@ -125,6 +125,10 @@ position: relative;
     left: 50%;
     transform: translate(-50%);
 }
+.button__arrows{
+    width: 25px;
+    height: 25px;
+}
 a{
     text-decoration: none;
     font-size: 15px;
@@ -160,6 +164,10 @@ a{
 .heart::after {
   left: -10px;
   top: 0;
+}
+.harry_in_boom{
+    width: 200px; 
+    height: 150px;
 }
 
 @keyframes fall {
@@ -213,5 +221,9 @@ a{
     .chessboard{
         grid-template-columns: repeat(8, 30px);
         grid-template-rows: repeat(8, 30px);
+    }
+    .harry_in_boom{
+        width: 100px;
+        height: 70px;
     }
 }
